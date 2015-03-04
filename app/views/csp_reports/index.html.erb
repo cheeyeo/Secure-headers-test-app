@@ -1,0 +1,32 @@
+<% if @reports.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Application Name</th>
+        <th>Enforce?</th>
+        <th>Document URI</th>
+        <th>Referrer</th>
+        <th>Violated Directive</th>
+        <th>Effective Directive</th>
+        <th>Original Policy</th>
+        <th>Blocked URI</th>
+        <th>Status Code</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reports.each do |report| %>
+        <tr>
+          <td><%= report.app_name %></td>
+          <td><%= report.enforce? %></td>
+          <td><%= report.document_uri %></td>
+          <td><%= report.referrer %></td>
+          <td><%= report.violated_directive %></td>
+          <td><%= report.effective_directive %></td>
+          <td><%= report.original_policy %></td>
+          <td><%= report.blocked_uri %></td>
+          <td><%= report.status_code %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

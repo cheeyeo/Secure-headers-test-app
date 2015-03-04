@@ -1,0 +1,8 @@
+<h1>Broken CSP</h1>
+<p>This page is deliberately set to brake CSP so as to create a log report</h1>
+<!-- this line is deliberate to break the csp policy for loading http images from an untrusted source-->
+<img src="https://avatars1.githubusercontent.com/u/13710?v=3&s=40" />
+
+<!-- this shouldn't break-->
+
+<%= image_tag 'bananas.jpg' %>
