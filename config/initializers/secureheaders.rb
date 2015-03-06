@@ -6,12 +6,13 @@
   config.x_download_options = 'noopen'
   config.x_permitted_cross_domain_policies = 'none'
   config.csp = {
-    :default_src => "https: self",
-    :script_src => "https: self",
-    :img_src => "https: self",
+    :default_src => "self",
+    :script_src => "self nonce",
+    :img_src => "self",
+    :frame_src => "https: https://platform.twitter.com",
     :tag_report_uri => true,
     :enforce => true,
-    :app_name => 'secure_headers_test',
+    :app_name => Rails.application.class.to_s.split("::").first,
     :report_uri => '/csp_reports'
   }
 end

@@ -6,7 +6,7 @@ class CspReportsController < ApplicationController
   end
 
   def create
-    if params["app_name"] == "secure_headers_test"
+    if params["app_name"] == "SecureHeadersTest"
       data = request.body.read
 
       report = CspReport.new

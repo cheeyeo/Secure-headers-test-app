@@ -1,8 +1,36 @@
-<h1>Broken CSP</h1>
-<p>This page is deliberately set to brake CSP so as to create a log report</h1>
+<h1>Testing CSP</h1>
+
+<div>
+<h3>Images</h3>
+<p>The first image generates a csp report whereas the second one is allowed.</p>
 <!-- this line is deliberate to break the csp policy for loading http images from an untrusted source-->
 <img src="https://avatars1.githubusercontent.com/u/13710?v=3&s=40" />
 
 <!-- this shouldn't break-->
-
 <%= image_tag 'bananas.jpg' %>
+</div>
+
+<div>
+  <h3>Javascript</h3>
+  <p>Using a nonce in an inline script tag</p>
+  <div id="whitelisted"></div>
+    <script nonce="<%= @content_security_policy_nonce %>">
+    console.log("whitelisted, will execute");
+    $('#whitelisted').html('whitelisted, will execute');
+  </script>
+
+  <p>Plain script tag with no nonce will not execute</p>
+  <script>
+    console.log("not whitelisted, will not execute");
+  </script>
+</div>
+
+<div>
+  <h3>IFrames</h3>
+  <p>The Iframe below is whitelisted</p>
+  <iframe src="https://platform.twitter.com/widgets/tweet_button.html"
+        style="border: 0; width:130px; height:20px;"></iframe>
+
+  <p>Disallowed IFrame</p>
+    <iframe src="http://untrustedwidgets.com/index.html"></iframe>
+</div>
