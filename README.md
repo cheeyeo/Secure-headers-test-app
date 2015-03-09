@@ -2,7 +2,7 @@
 
 Example Rails 4.2 application using Content Security Policy with secure_headers gem.
 
-Also referenced from this [blog article]()
+Also referenced from this [blog article](http://www.cheeyeo.uk/ruby/rails/2015/03/05/content-security-policy/)
 
 ## References
 
